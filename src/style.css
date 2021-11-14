@@ -1,0 +1,83 @@
+body {
+  font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-weight: 800;
+  margin-top: 60px;
+  color: #272044;
+  font-size: 34px;
+}
+
+h2 {
+  font-size: 15px;
+  color: darkslategray;
+  padding: 0 0 24px;
+  font-weight: 800;
+}
+h4 {
+  font-size: 18px;
+  margin: 0 0 15px;
+}
+p {
+  color: darkslategrey;
+  font-family: monospace;
+  margin-top: 0px;
+  font-size: 20px;
+}
+footer {
+  padding: 0px 50px;
+
+  display: block;
+  margin: auto 0;
+}
+img {
+  height: 150px;
+}
+
+.more-info-weather {
+  padding: 0px 50px;
+
+  display: block;
+  margin: auto 0;
+}
+.celcius,
+.farenheit {
+  font-size: 20px;
+}
+.rounded {
+  display: block;
+  margin-right: 25%;
+  height: 200px;
+}
+.tempeture-now {
+  font-size: 35px;
+  margin: 0px;
+}
+.weather-now {
+  color: darkslategrey;
+  font-size: 18px;
+  margin: 0px;
+}
+.numbers-information {
+  padding: 10px 0px 10px 0px;
+  font-size: 40px;
+  font-weight: bolder;
+}
+.moreinfo-text {
+  font-size: 18px;
+}
+.card-img-bottom {
+  display: block;
+  margin: auto 0;
+}
+.card-body {
+  display: block;
+  margin: auto 0;
+}
+.card-title {
+  text-align: center;
+}
+.card-text {
+  text-align: center;
+}
