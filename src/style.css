@@ -1,6 +1,5 @@
 body {
   font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
-  margin: 20px;
 }
 
 h1 {
@@ -84,4 +83,7 @@ img {
 }
 .byme {
   padding: 0px 100px;
+}
+.container {
+  margin: 20px;
 }
