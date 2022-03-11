@@ -1,4 +1,4 @@
-body {
+ody {
   max-width: 700px;
   margin: 30px auto;
   padding: 15px;
@@ -73,23 +73,14 @@ img {
 .moreinfo-text {
   font-size: 18px;
 }
-.card-img-bottom {
-  display: block;
-  margin: auto 0;
-}
-.card-body {
-  display: block;
-  margin: auto 0;
-}
-.card-title {
-  text-align: center;
-}
-.card-text {
-  text-align: center;
-}
+
 .byme {
   padding: 0px 100px;
 }
 .container {
   margin: 10px auto;
+}
+
+.byme {
+  text-align: center;
 }
