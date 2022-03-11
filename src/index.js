@@ -45,13 +45,25 @@ function showTemperature(response) {
   let heading = document.querySelector("h1");
   heading.innerHTML = `${response.data.name}`;
   let currentTemp = document.querySelector("#tempeture-now");
-  currentTemp.innerHTML = `${Math.round(response.data.main.temp)}ºc`;
+  currentTemp.innerHTML = `${Math.round(response.data.main.temp)}`;
   let tempDescription = document.querySelector("#weather-now");
+
+    CelciusTemperature = response.data.main.temp; 
+
+
   tempDescription.innerHTML = response.data.weather[0].main;
   let maxDegrees = document.querySelector("#maximum");
-  maxDegrees.innerHTML = `${Math.round(response.data.main.temp_max)}ºc`;
+  maxDegrees.innerHTML = `${Math.round(response.data.main.temp_max)}`;
   let minDegrees = document.querySelector("#minimum");
-  minDegrees.innerHTML = `${Math.round(response.data.main.temp_min)}ºc`;
+  minDegrees.innerHTML = `${Math.round(response.data.main.temp_min)}`;
+  let WindElement = document.querySelector("#wind");
+  WindElement.innerHTML = response.data.main.humidity;
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = Math.round(response.data.wind.speed);
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png` ) = "http://openweathermap.org/img//10d@2x.png" ;
+
+
 }
 
 function searchLocation(position) {
@@ -68,3 +80,26 @@ function getCurrentLocation(event) {
 
 let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+function displayFarenheitTemperature(event) {
+event.preventDefault(); 
+let temperatureElement =  document.querySelector("#tempeture-now");
+let farenheitTemperature = (CelciusTemperature * 9) / 5 + 32; 
+temperatureElement.innerHTML = Math.round(farenheitTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+event.preventDefault(); 
+let temperatureElement =  document.querySelector("#tempeture-now");
+temperatureElement.innerHTML = Math.round(CelciusTemperature); 
+}
+
+let CelciusTemperature = null; 
+
+let farenheitUnit =  document.querySelector("#farenheit-unit");
+farenheitUnit.addEventListener("click", displayFarenheitTemperature); 
+
+let celsiusUnit =  document.querySelector("#deg-celcius");
+celsiusUnit.addEventListener("click", displayCelsiusTemperature); 
+
+search ="Paris"; 
