@@ -17,6 +17,7 @@ let hours = currentTime.getHours();
 let minutes = currentTime.getMinutes();
 dateElement.innerHTML = `${day} ${date}, ${hours}:${minutes}`;
 
+
 function searchCity(event) {
   event.preventDefault();
   let cityElement = document.querySelector("#city-display");
@@ -93,6 +94,35 @@ event.preventDefault();
 let temperatureElement =  document.querySelector("#tempeture-now");
 temperatureElement.innerHTML = Math.round(CelciusTemperature); 
 }
+
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row align-items-start">`; 
+  let days = ["Wednesday","Thuerdays","Friday"]; 
+  days.forEach(funtion(day) {
+
+ forecastHTML= forecastHTML + 
+  `
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">${day}</h5>
+  <img src="image/sun.svg" class="card-img-bottom" alt="...">
+        <p class="card-text"> <span class="weather-forecast-min"> 18 </span> -<span class="weather-forecast-max"> 21 </span> ºc </p>  
+      </div>
+    </div>
+  </div>
+  `;
+  });
+  
+ 
+    forecastHTML = forecastHTML +`<div>`;
+    forecastElement.innerHTML = forecastHTML; 
+}
+
+displayForecast(); 
 
 let CelciusTemperature = null; 
 
