@@ -25,6 +25,35 @@ function searchCity(event) {
   cityElement.innerHTML = cityImput.value;
 }
 
+function displayForecast(response) {
+  let forecast = response.data.daily; 
+
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row align-items-start">`; 
+  days.forEach(function(forecastDay) {
+
+ forecastHTML= forecastHTML + 
+  `
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">${forecastDay.dt}</h5>
+  <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" class="card-img-bottom" alt="...">
+        <p class="card-text"> <span class="weather-forecast-min"> ${forecastDay.temp.min} ºC </span> -<span class="weather-forecast-max"> ${forecastDay.temp.max}</span> ºc </p>  
+      </div>
+    </div>
+  </div>
+  `;
+  });
+  
+ 
+    forecastHTML = forecastHTML +`<div>`;
+    forecastElement.innerHTML = forecastHTML; 
+}
+
+
+
 let searchForm = document.querySelector("#search-city");
 searchForm.addEventListener("submit", searchCity);
 
@@ -41,12 +70,12 @@ function search(event) {
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", search);
 
-function getForecast(coordinate) {
-let apiKey = "cdf98f863d0378b05835909b54fe3a4c";
-let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinate.lat}&lon=${coordinate.lon}&appid=${apiKey}&untis=metric`;
-console.log(apiUrl);
-axios.get(apiUrl).then(displayForecast); 
-
+function getForecast(coordinates) {
+  console.log(coordinates);
+   let apiKey = "cdf98f863d0378b05835909b54fe3a4c";
+   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinate.lat}&lon=${coordinate.lon}&appid=${apiKey}&untis=metric`;
+   console.log(apiUrl),
+   axios.get(apiUrl).then(displayForecast);
 }
 
 function showTemperature(response) {
@@ -104,33 +133,7 @@ temperatureElement.innerHTML = Math.round(CelciusTemperature);
 }
 
 
-function displayForecast(response) {
-  let forecastElement = document.querySelector("#forecast");
 
-  let forecastHTML = `<div class="row align-items-start">`; 
-  let days = ["Wednesday","Thuerdays","Friday"]; 
-  days.forEach(function(day) {
-
- forecastHTML= forecastHTML + 
-  `
-  <div class="col-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">${day}</h5>
-  <img src="image/sun.svg" class="card-img-bottom" alt="...">
-        <p class="card-text"> <span class="weather-forecast-min"> 18 </span> -<span class="weather-forecast-max"> 21 </span> ºc </p>  
-      </div>
-    </div>
-  </div>
-  `;
-  });
-  
- 
-    forecastHTML = forecastHTML +`<div>`;
-    forecastElement.innerHTML = forecastHTML; 
-}
-
-displayForecast(); 
 
 let CelciusTemperature = null; 
 
