@@ -1,4 +1,4 @@
-ody {
+body {
   max-width: 700px;
   margin: 30px auto;
   padding: 15px;
@@ -35,7 +35,7 @@ footer {
   display: block;
   margin: auto 0;
 }
-img {
+.rounded-float-end {
   margin-top: 15px;
   height: 100px;
 }
@@ -79,6 +79,11 @@ img {
 }
 .container {
   margin: 10px auto;
+}
+.card-body {
+  display: block;
+  margin: auto 0;
+  text-align: center;
 }
 
 .byme {
