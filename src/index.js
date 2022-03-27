@@ -14,13 +14,7 @@ let days = [
 let day = days[currentTime.getDay()];
 let date = currentTime.getDate();
 let hours = currentTime.getHours();
-if (hours < 10) {
-  hours = `0${hours}`;
-}
 let minutes = currentTime.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
 dateElement.innerHTML = `${day} ${date}, ${hours}:${minutes}`;
 
 function formatDay(timestamp) {
@@ -53,15 +47,17 @@ function displayForecast(response) {
   <div class="col-4">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">${days[new Date(forecastDay.dt).getDay()]}</h5>
+        <h5 class="card-title">${
+          days[new Date(forecastDay.dt * 1000).getDay()]
+        }</h5>
   <img src="http://openweathermap.org/img/wn/${
     forecastDay.weather[0].icon
   }@2x.png" class="card-img-bottom" alt="...">
-        <p class="card-text"> <span class="weather-forecast-min"> ${Math.round(
+        <p class="card-text"> <span class="weather-forecast-min"> ${
           forecastDay.temp.min
-        )} ºC </span> -<span class="weather-forecast-max"> ${Math.round(
+        } ºC </span> -<span class="weather-forecast-max"> ${
           forecastDay.temp.max
-        )}</span> ºc </p>  
+        }</span> ºc </p>  
       </div>
     </div>
   </div>
@@ -120,9 +116,12 @@ function search(event) {
   let units = "metric";
   let apiUrl = `${apiEndpoint}?q=${city}&units=${units}&appid=${apiKey}`;
   axios.get(apiUrl).then(showTemperature);
+  let cityElement = document.querySelector("#city-display");
+  let cityImput = document.querySelector("#city-search-input");
+  cityElement.innerHTML = cityImput.value;
 }
 
-function handleSubmit(event) {
+function searchCity(event) {
   event.preventDefault();
   let cityElement = document.querySelector("#city-display");
   let cityImput = document.querySelector("#city-search-input");
