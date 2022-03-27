@@ -52,12 +52,12 @@ function displayForecast(response) {
         }</h5>
   <img src="http://openweathermap.org/img/wn/${
     forecastDay.weather[0].icon
-  }@2x.png" class="card-img-bottom" alt="...">
+  }@2x.png" class="card-img-bottom" alt="..." id="icon">
         <p class="card-text"> <span class="weather-forecast-min"> ${Math.round(
           forecastDay.temp.min
-        )} ºC </span> <br> <span class="weather-forecast-max"> ${Math.round(
+        )}ºC </span> <br> <span class="weather-forecast-max"> ${Math.round(
           forecastDay.temp.max
-        )}</span> ºC</p>  
+        )}</span>ºC</p>  
       </div>
     </div>
   </div>
@@ -78,9 +78,8 @@ function getForecast(coordinates) {
 }
 
 function showTemperature(response) {
-  console.log(response);
-  let heading = document.querySelector("h1");
-  heading.innerHTML = `${response.data.name}`;
+  let cityElement = document.querySelector("h1");
+  cityElement.innerHTML = `${response.data.name}`;
   let currentTemp = document.querySelector("#tempeture-now");
   currentTemp.innerHTML = `${Math.round(response.data.main.temp)}`;
   let tempDescription = document.querySelector("#weather-now");
@@ -146,14 +145,5 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", search);
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#tempeture-now");
-  temperatureElement.innerHTML = Math.round(CelciusTemperature);
-}
-
-let celsiusUnit = document.querySelector("#deg-celcius");
-celsiusUnit.addEventListener("click", displayCelsiusTemperature);
 
 search("Paris");
