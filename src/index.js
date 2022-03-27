@@ -53,11 +53,11 @@ function displayForecast(response) {
   <img src="http://openweathermap.org/img/wn/${
     forecastDay.weather[0].icon
   }@2x.png" class="card-img-bottom" alt="...">
-        <p class="card-text"> <span class="weather-forecast-min"> ${
+        <p class="card-text"> <span class="weather-forecast-min"> ${Math.round(
           forecastDay.temp.min
-        } ºC </span> -<span class="weather-forecast-max"> ${
+        )} ºC </span> <br> <span class="weather-forecast-max"> ${Math.round(
           forecastDay.temp.max
-        }</span> ºc </p>  
+        )}</span> ºC</p>  
       </div>
     </div>
   </div>
@@ -72,7 +72,8 @@ function displayForecast(response) {
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "cdf98f863d0378b05835909b54fe3a4c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&untis=metric`;
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -146,23 +147,11 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", search);
 
-function displayFarenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#tempeture-now");
-  let farenheitTemperature = (CelciusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(farenheitTemperature);
-}
-
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#tempeture-now");
   temperatureElement.innerHTML = Math.round(CelciusTemperature);
 }
-
-let CelciusTemperature = null;
-
-let farenheitUnit = document.querySelector("#farenheit-unit");
-farenheitUnit.addEventListener("click", displayFarenheitTemperature);
 
 let celsiusUnit = document.querySelector("#deg-celcius");
 celsiusUnit.addEventListener("click", displayCelsiusTemperature);
