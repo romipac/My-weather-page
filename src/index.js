@@ -103,6 +103,11 @@ function showTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
   getForecast(response.data.coord);
 }
+function searchCityName(city) {
+  let apiKey = "cdf98f863d0378b05835909b54fe3a4c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+}
 
 function search(city) {
   let apiKey = "cdf98f863d0378b05835909b54fe3a4c";
@@ -153,4 +158,4 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 let form = document.querySelector("#search-city");
 form.addEventListener("submit", search);
 
-search("Paris");
+searchCityName("Paris");
